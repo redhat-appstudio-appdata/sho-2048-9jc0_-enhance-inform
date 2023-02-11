@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app.kubernetes.io/created-by: application-service
+    app.kubernetes.io/instance: comp-2048-ummw
+    app.kubernetes.io/managed-by: kustomize
+    app.kubernetes.io/name: comp-2048-ummw
+    app.kubernetes.io/part-of: sho-2048
+  name: comp-2048-ummw
+  namespace: showeimer-tenant
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/instance: comp-2048-ummw
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app.kubernetes.io/instance: comp-2048-ummw
+    spec:
+      containers:
+      - image: quay.io/redhat-appstudio/user-workload:showeimer-tenant-comp-2048-ummw
+        imagePullPolicy: Always
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 3001
+          initialDelaySeconds: 10
+          periodSeconds: 10
+        name: container-image
+        ports:
+        - containerPort: 3001
+        readinessProbe:
+          initialDelaySeconds: 10
+          periodSeconds: 10
+          tcpSocket:
+            port: 3001
+        resources:
+          requests:
+            cpu: 10m
+            memory: 50Mi
+status: {}
