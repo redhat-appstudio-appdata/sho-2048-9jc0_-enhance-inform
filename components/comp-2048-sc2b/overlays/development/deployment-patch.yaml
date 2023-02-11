@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  name: comp-2048-sc2b
+  namespace: showeimer-tenant
+spec:
+  replicas: 1
+  selector: {}
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+    spec:
+      containers:
+      - image: quay.io/redhat-appstudio/user-workload@sha256:fe84ba4de02997cba517715fe046270cb938fbdcf31227a27483489fbbf37c8c
+        name: container-image
+        resources: {}
+status: {}
