@@ -23,7 +23,7 @@ spec:
         app.kubernetes.io/instance: comp-2048-sc2b
     spec:
       containers:
-      - image: quay.io/redhat-appstudio/user-workload:showeimer-tenant-comp-2048-sc2b
+      - image: quay.io/redhat-appstudio/user-workload@sha256:fe84ba4de02997cba517715fe046270cb938fbdcf31227a27483489fbbf37c8c
         imagePullPolicy: Always
         livenessProbe:
           httpGet:
